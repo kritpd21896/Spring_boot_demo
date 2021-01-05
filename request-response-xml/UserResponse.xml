@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GetUserResponse xmlns="http://springdemoproject/users"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://springdemoproject/users user-details.xsd">
+	<UserDetails>
+		<id>123</id>
+		<firstname>Kritartha</firstname>
+		<lastname>Deka</lastname>
+	</UserDetails>
+</GetUserResponse>
