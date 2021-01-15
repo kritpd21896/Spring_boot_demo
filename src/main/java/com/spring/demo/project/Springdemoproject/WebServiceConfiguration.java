@@ -15,6 +15,7 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 public class WebServiceConfiguration {
 	// MessageDispatcherServlet
+	@SuppressWarnings({"rawtypes","unchecked"})
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {
 

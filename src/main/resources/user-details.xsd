@@ -7,6 +7,7 @@ elementFormDefault="qualified">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="id" type="xs:int"/>
+				<xs:element name="role_id" type="xs:int"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
@@ -26,6 +27,7 @@ elementFormDefault="qualified">
 			<xs:element name="taxId" type="xs:int"/>
 			<xs:element name="passportNumber" type="xs:string"/>
 			<xs:element name="dlNumber" type="xs:string"/>
+			<xs:element name="role_details" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 
