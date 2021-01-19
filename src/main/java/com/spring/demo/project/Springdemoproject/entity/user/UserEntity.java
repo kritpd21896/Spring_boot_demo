@@ -1,10 +1,19 @@
 package com.spring.demo.project.Springdemoproject.entity.user;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.spring.demo.project.Springdemoproject.entity.roles.UserRoles;
 
 @Entity
+@Table(name="Users")
 public class UserEntity{
 
 	
@@ -18,6 +27,12 @@ public class UserEntity{
 	private int tax_id;
 	private int passport_number;
 	private int dl_number;
+	
+	@OneToMany(
+			mappedBy = "userEntity",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private List<UserRoles> roles=new ArrayList<UserRoles>();
 	
 	public UserEntity() {
 		
@@ -77,6 +92,16 @@ public class UserEntity{
 	}
 	public void setDl_number(int dl_number) {
 		this.dl_number = dl_number;
+	}
+
+
+	public List<UserRoles> getRoles() {
+		return roles;
+	}
+
+
+	public void setRoles(List<UserRoles> roles) {
+		this.roles = roles;
 	}
 	
 	
