@@ -1,22 +1,17 @@
 package com.spring.demo.project.Springdemoproject.entity.user;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="Employee")
-public class UserEntity implements Serializable{
+public class UserEntity{
 
-	private static final long serialVersionUID =1L;
+	
 	
 	@Id
 	@GeneratedValue
 	private int user_id;
-	private int role_id;
 	private String first_name;
 	private String last_name;
 	private String personal_address;
@@ -32,7 +27,6 @@ public class UserEntity implements Serializable{
 	public UserEntity(int role_id, String first_name, String last_name, String personal_address, int tax_id,
 			int passport_number, int dl_number) {
 		super();
-		this.role_id = role_id;
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.personal_address = personal_address;
@@ -47,12 +41,7 @@ public class UserEntity implements Serializable{
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
-	public int getRole_id() {
-		return role_id;
-	}
-	public void setRole_id(int role_id) {
-		this.role_id = role_id;
-	}
+
 	public String getFirst_name() {
 		return first_name;
 	}
