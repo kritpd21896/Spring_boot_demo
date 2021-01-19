@@ -23,7 +23,7 @@ public class UserRepositoryCommandLineRunner implements CommandLineRunner{
 		userRepository.save(user1);
 		userRepository.save(user2);
 		
-		// TODO Auto-generated method stub
+	
 		
 	}
 	

@@ -7,8 +7,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
+import com.spring.demo.project.Springdemoproject.entity.user.UserDAOService;
 import com.spring.demo.project.Springdemoproject.entity.user.UserEntity;
-import com.spring.demo.project.Springdemoproject.service.user.UserEntityService;
+
 
 import springdemoproject.users.GetUserRequest;
 import springdemoproject.users.GetUserResponse;
@@ -17,23 +18,33 @@ import springdemoproject.users.UserDetails;
 @Endpoint
 public class UserEndpoint {
 	
-	public UserEntityService service;
+	public UserDAOService service;
 	
-	public UserEndpoint() {}
+	
 
 	@Autowired
-	public UserEndpoint(UserEntityService service) {
-		
+	public UserEndpoint(UserDAOService service) {
+//		super();
 		this.service = service;
 	}
-	
-	@PayloadRoot(namespace = "http://springdemoproject/users", localPart = "getUserRequest")
+
+
+
+
+	@PayloadRoot(namespace = "http://springdemoproject/users", localPart ="GetUserRequest")
 	@ResponsePayload
 	public GetUserResponse getUserDetails(@RequestPayload GetUserRequest request) {
 		GetUserResponse response=new GetUserResponse();
-		UserEntity entity=service.getUserById(request.getId());
+		UserEntity entity=this.service.getById(request.getId());
+		System.out.println(entity.getFirst_name());
 		UserDetails details=new UserDetails();
-		BeanUtils.copyProperties(entity, details);
+		details.setId(entity.getUser_id());
+		details.setFirstname(entity.getFirst_name());
+		details.setLastname(entity.getLast_name());
+		details.setDlNumber(entity.getDl_number());
+		details.setPassportNumber(entity.getPassport_number());
+		details.setPersonalAddress(entity.getPersonal_address());
+		details.setTaxId(entity.getTax_id());
 		response.setUserDetails(details);
 		return response;
 	}
